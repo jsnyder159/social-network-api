@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const Reactions= require('./Reactions');
+const Reaction = require('./Reaction');
 
 const thoughtSchema = new Schema(
     {
@@ -19,7 +19,7 @@ const thoughtSchema = new Schema(
         },
         reactions: [{ 
             type: Schema.Types.ObjectId,
-             ref: 'Reactions',
+             ref: 'Reaction',
             },
         ],
     },
@@ -32,7 +32,7 @@ const thoughtSchema = new Schema(
 );
 
 thoughtSchema
-    .virtual('getReactions')
+    .virtual('getReaction')
     .get(() =>{
         return this.reactions.length;
     });
