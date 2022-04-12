@@ -5,7 +5,7 @@ module.exports = {
     // Get all users
     getUsers(req, res) {
         User.find()
-            .then((users) => res.json(users))
+            .then((user) => res.json(user))
             .catch((err) => res.status(500).json(err));
     },
 
@@ -33,7 +33,7 @@ module.exports = {
 
     // Delete a user and their thoughts
     deleteUser(req, res) {
-        User.findOneAndDelete({ _id: req.parama.courseId })
+        User.findOneAndDelete({ _id: req.params.userId })
             .then((user) =>
                 !user
                     ? res.status(404).json({ message: 'There is no user with that ID.' })
