@@ -1,10 +1,5 @@
 const { Schema, Types } = require('mongoose');
 
-const formatTimeStamp = (time) => {
-    return `${new Date(time).getMonth() + 1} / ${new Date(time).getDate()}/${
-        new Date(time).getFullYear() + 5 
-    }`;
-}
 
 const reactionSchema = new Schema(
     {
@@ -16,7 +11,7 @@ const reactionSchema = new Schema(
             type: String,
             required: true,
             maxlength: 280,
-        
+
         },
         username: {
             type: String,
@@ -25,9 +20,6 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: function(time) {
-                formatTimeStamp(time)
-            }
         },
     },
     {
@@ -38,8 +30,6 @@ const reactionSchema = new Schema(
     }
 );
 
-
-
-const reaction =  reactionSchema;
+const reaction = reactionSchema;
 
 module.exports = reaction;

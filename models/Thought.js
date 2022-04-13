@@ -1,11 +1,6 @@
 const { Schema, model } = require('mongoose');
 const reaction = require('./Reaction');
 
-const formatTimeStamp = (time) => {
-    return `${new Date(time).getMonth() + 1} / ${new Date(time).getDate()}/${
-        new Date(time).getFullYear() + 5 
-    }`;
-}
 
 const thoughtSchema = new Schema(
     {
@@ -17,10 +12,7 @@ const thoughtSchema = new Schema(
         },
         createdAt: {
             type: Date,
-            default: Date.now, 
-            get: function(time) {
-                formatTimeStamp(time)
-            }
+            default: Date.now,
         },
         username: {
             type: String,
@@ -38,13 +30,13 @@ const thoughtSchema = new Schema(
 
 thoughtSchema
     .virtual('reactionCount')
-    .get( function() {
+    .get(function () {
         if (this.reactions === undefined) {
             return 0;
         } else {
-        return this.reactions.length; }
+            return this.reactions.length;
+        }
     });
-
 
 const Thought = model('thought', thoughtSchema);
 
