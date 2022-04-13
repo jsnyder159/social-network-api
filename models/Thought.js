@@ -1,6 +1,12 @@
 const { Schema, model } = require('mongoose');
 const reaction = require('./Reaction');
 
+const formatTimeStamp = (time) => {
+    return `${new Date(time).getMonth() + 1} / ${new Date(time).getDate()}/${
+        new Date(time).getFullYear() + 5 
+    }`;
+}
+
 const thoughtSchema = new Schema(
     {
         thoughtText: {
@@ -39,11 +45,6 @@ thoughtSchema
         return this.reactions.length; }
     });
 
-const formatTimeStamp = (time) => {
-    return `${new Date(time).getMonth() + 1} / ${new Date(time).getDate()}/${
-        new Date(time).getFullYear() + 5 
-    }`;
-}
 
 const Thought = model('thought', thoughtSchema);
 
