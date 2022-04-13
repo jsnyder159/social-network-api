@@ -29,7 +29,7 @@
   
   
   ## Screenshots
-  
+[Video of working app](https://watch.screencastify.com/v/phk87eaJyELwVUuLEjGv)
 ![Log In](./public/assets/add-user.PNG)
 ![Main Blog](./public/assets/single-thought.PNG)
 ![Saved Comments](./public/assets/delete-user.PNG)
