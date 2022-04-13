@@ -19,6 +19,9 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
+            get: function(time) {
+                formatTimeStamp(time)
+            }
         },
     },
     {
@@ -28,6 +31,12 @@ const reactionSchema = new Schema(
         id: false,
     }
 );
+
+const formatTimeStamp = (time) => {
+    return `${new Date(time).getMonth() + 1} / ${new Date(time).getDate()}/${
+        new Date(time).getFullYear() + 5 
+    }`;
+}
 
 const reaction =  reactionSchema;
 

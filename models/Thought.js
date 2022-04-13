@@ -12,6 +12,9 @@ const thoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now, 
+            get: function(time) {
+                formatTimeStamp(time)
+            }
         },
         username: {
             type: String,
@@ -35,6 +38,12 @@ thoughtSchema
         } else {
         return this.reactions.length; }
     });
+
+const formatTimeStamp = (time) => {
+    return `${new Date(time).getMonth() + 1} / ${new Date(time).getDate()}/${
+        new Date(time).getFullYear() + 5 
+    }`;
+}
 
 const Thought = model('thought', thoughtSchema);
 
